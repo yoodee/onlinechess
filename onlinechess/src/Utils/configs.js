@@ -1,3 +1,5 @@
+export const BOARDSIZE = 8;
+
 export const pieces = {
 	BH: "bknight",
 	BQ: "bqueen",
