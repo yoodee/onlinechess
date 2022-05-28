@@ -32,10 +32,10 @@ const checkFrom = (board, player, piece) => {
       let i = kingPos[0] + dir[0], j = kingPos[1] + dir[1], c = 0;
       i >= 0 && i < BOARDSIZE && j >= 0 && j < BOARDSIZE && c < n;
       i += dir[0], j += dir[1], c += 1) {
-      if (board[i][j] === cpieces.NONE)
-        break;
       if (board[i][j] === cpieces[opponentpiece])
         return true;
+      if (board[i][j] !== cpieces.NONE)
+        break;
     }
   }
   return false;
