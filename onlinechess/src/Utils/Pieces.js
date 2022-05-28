@@ -2,7 +2,9 @@ import { colors, pieces } from "./configs";
 
 //TODO: Check if king is in possible move location
 
-const calcPawnPossibleMoves = (color, location, board) => {
+const calcPossibleMoves = (piece, color, location, board) => {};
+
+export const calcPawnPossibleMoves = (color, location, board) => {
 	//#TODO: white or black piece direction
 	let possibleMoves = [];
 	const [i, j] = location;
@@ -19,7 +21,7 @@ const calcPawnPossibleMoves = (color, location, board) => {
 	return possibleMoves;
 };
 
-const calcKnightPossibleMoves = (color, location, board) => {
+export const calcKnightPossibleMoves = (color, location, board) => {
 	let possibleMoves = [];
 	const [i, j] = location;
 
@@ -45,7 +47,7 @@ const calcKnightPossibleMoves = (color, location, board) => {
 	return possibleMoves;
 };
 
-const calcRookPossibleMoves = (color, location, board) => {
+export const calcRookPossibleMoves = (color, location, board) => {
 	let possibleMoves = [];
 	const [i, j] = location;
 	//towards right
@@ -92,7 +94,7 @@ const calcRookPossibleMoves = (color, location, board) => {
 	return possibleMoves;
 };
 
-const calcBishopPossibleMoves = (color, [i, j], board) => {
+export const calcBishopPossibleMoves = (color, [i, j], board) => {
 	let possibleMoves = [];
 	//towards top right
 	for (let k = i, l = j; k >= 0 && l <= 7; k--, l++) {
@@ -137,7 +139,7 @@ const calcBishopPossibleMoves = (color, [i, j], board) => {
 	return possibleMoves;
 };
 
-const calcKingMoves = (color, [i, j], board) => {
+export const calcKingMoves = (color, [i, j], board) => {
 	let possibleMoves = [];
 	const locations = [
 		[i - 1, j],
@@ -151,19 +153,23 @@ const calcKingMoves = (color, [i, j], board) => {
 	];
 
 	for (let val in locations) {
-		for (let val in locations) {
-			if (
-				getLocationInfo(color, locations[val], board) === 0 ||
-				getLocationInfo(color, locations[val], board) === -1
-			)
-				possibleMoves.push(locations[val]);
-		}
-
-		return possibleMoves;
+		if (
+			getLocationInfo(color, locations[val], board) === 0 ||
+			getLocationInfo(color, locations[val], board) === -1
+		)
+			possibleMoves.push(locations[val]);
 	}
+
+	return possibleMoves;
 };
 
-function getLocationInfo(color, location, board) {
+export const calcQueenPossibleMoves = (color, [i, j], board) => {
+	let possibleMoves = calcBishopPossibleMoves(color, [i, j], board);
+	possibleMoves.concat(calcRookPossibleMoves(color, [i, j], board));
+	return possibleMoves;
+};
+
+export function getLocationInfo(color, location, board) {
 	//returns 0 if empty, 1 if your piece, -1 if opponent's piece, -2 if invalid location
 	if (
 		location[0] < 0 ||
