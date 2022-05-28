@@ -1,0 +1,1 @@
+const checkPawnMove = (color, location) => {};
