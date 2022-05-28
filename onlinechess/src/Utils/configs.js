@@ -1,4 +1,4 @@
-export const pieces = {
+export const cpieces = {
 	BH: "bknight",
 	BQ: "bqueen",
 	BK: "bking",
@@ -12,4 +12,18 @@ export const pieces = {
 	WP: "wpawn",
 	WB: "wbishop",
 	NONE: "",
+};
+
+export const colors = {
+	W: "w",
+	B: "b",
+};
+
+export const pieces = {
+	H: "knight",
+	Q: "queen",
+	K: "king",
+	R: "rook",
+	B: "bishop",
+	P: "pawn",
 };
