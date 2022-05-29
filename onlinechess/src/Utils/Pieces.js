@@ -2,8 +2,6 @@ import { colors, pieces } from "./configs";
 
 //TODO: Check if king is in possible move location
 
-const calcPossibleMoves = (piece, color, location, board) => {};
-
 export const calcPawnPossibleMoves = (color, location, board) => {
 	//#TODO: white or black piece direction
 	let possibleMoves = [];
@@ -139,7 +137,7 @@ export const calcBishopPossibleMoves = (color, [i, j], board) => {
 	return possibleMoves;
 };
 
-export const calcKingMoves = (color, [i, j], board) => {
+export const calcKingPossibleMoves = (color, [i, j], board) => {
 	let possibleMoves = [];
 	const locations = [
 		[i - 1, j],
